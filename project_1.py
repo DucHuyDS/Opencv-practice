@@ -10,13 +10,12 @@ detector = HandDetector(detectionCon=0.8)
 
 
 colorR = (255,0,255)
-x, y, w, h= 100,100, 200, 200
+
 
 
 
 class DragRect:
-    def __init__(self, position, id, size=[200,200]):
-        self.id = id
+    def __init__(self, position, size=[200, 200]):
         self.x, self.y = position[0], position[1]
         self.w, self.h = size[0], size[1]
         self.position_prev = position
@@ -40,12 +39,17 @@ class DragRect:
 
 reclist = []
 
-for i in range(5):
-    reclist.append(DragRect([i*250 + 50, 100], i))
-length_reclist = len(reclist)
+w, h = 250, 250
 
+j=0
+for i in range(6):
+    if i % 5 == 0:
+        j = 0
+    reclist.append(DragRect([j*w + 50 , 100 + (i//5)*h ]))
+    j +=1
+
+length_reclist = len(reclist)
 is_dragging = False
-id_rec = None
 optimizer_insert = 0
 
 
@@ -90,4 +94,7 @@ while True:
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+
+cap.release() 
 cv2.destroyAllWindows()
