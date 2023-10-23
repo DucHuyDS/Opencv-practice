@@ -69,8 +69,12 @@ while True:
         img_conca = cv2.vconcat([img, result])
 
     cv2.imshow("Original", img_conca)
-    # print(answers)
-   
+
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+    if cv2.waitKey(1) & 0xFF == ord('s'):
+        filename = "img/result.jpg"
+        cv2.imwrite(filename, result) 
+        print('đã luu')

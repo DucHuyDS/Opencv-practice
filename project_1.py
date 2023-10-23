@@ -61,12 +61,12 @@ while True:
     # lmlist, _= detector.find
     if hands:
         lmList = hands[0]['lmList']
-        cursor12, cursor8 = lmList[12], lmList[8]
-        cv2.circle(img, (cursor12[0], cursor12[1]), 10, colorR, cv2.FILLED)
+        cursor4, cursor8 = lmList[4], lmList[8]
+        cv2.circle(img, (cursor4[0], cursor4[1]), 10, colorR, cv2.FILLED)
         cv2.circle(img, (cursor8[0], cursor8[1]), 10, colorR, cv2.FILLED)
-        distance = detector.findDistance(cursor12[:2], cursor8[:2])
+        distance = detector.findDistance(cursor4[:2], cursor8[:2])
 
-        if distance[0] < 40:
+        if distance[0] < 50:
             for i in range(length_reclist):
                 if reclist[i].check_position(cursor8):
                     reclist[i].update(cursor8, is_dragging)
